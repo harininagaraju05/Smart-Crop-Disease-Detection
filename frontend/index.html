@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Crop Disease Detection</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo">🌱 SmartCrop</div>
+    <header class="navbar">
+        <div class="logo">
+            <span>🌱</span>
+            <div>
+                <h2>SmartCrop</h2>
+                <small>Disease Detection</small>
+            </div>
+        </div>
+
         <nav>
             <a href="#home">Home</a>
             <a href="#detect">Detect</a>
@@ -17,109 +24,214 @@
         </nav>
     </header>
 
-    <section class="hero" id="home">
-        <div class="hero-text">
-            <p class="tag">AI POWERED AGRICULTURE</p>
-            <h1>Smart Crop<br><span>Disease Detection</span></h1>
-            <p>
-                Upload a crop leaf image and identify possible diseases
-                quickly using our smart detection system.
-            </p>
-            <a href="#detect" class="btn">Start Detection →</a>
-        </div>
+    <main>
 
-        <div class="hero-card">
-            <div class="leaf-icon">🌿</div>
-            <h3>Healthy Crops</h3>
-            <p>Early detection helps farmers protect their crops.</p>
-        </div>
-    </section>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <span class="tag">🌿 AI-Powered Agriculture</span>
 
-    <section class="detect-section" id="detect">
-        <h2>Detect Crop Disease</h2>
-        <p class="section-text">
-            Upload a clear image of the affected crop leaf.
-        </p>
+                <h1>
+                    Detect Crop Diseases
+                    <span>Smarter & Faster</span>
+                </h1>
 
-        <div class="detector">
+                <p>
+                    Upload a leaf image and get an instant crop disease
+                    prediction with simple treatment suggestions.
+                </p>
 
-            <div class="upload-box" id="uploadBox">
-                <div id="uploadContent">
-                    <div class="upload-icon">📷</div>
-                    <h3>Upload Crop Image</h3>
-                    <p>PNG, JPG or JPEG</p>
-
-                    <label for="imageInput" class="upload-btn">
-                        Choose Image
-                    </label>
-
-                    <input type="file" id="imageInput"
-                           accept="image/png,image/jpeg,image/jpg">
-                </div>
-
-                <img id="preview" alt="Crop Preview">
+                <a href="#detect" class="primary-btn">
+                    Start Detection →
+                </a>
             </div>
 
-            <button class="detect-btn" id="detectBtn">
-                🔍 Detect Disease
-            </button>
+            <div class="hero-card">
+                <div class="plant-icon">🌱</div>
+                <h3>Healthy Crops</h3>
+                <p>Better detection. Better decisions. Better farming.</p>
 
-            <div class="result" id="result">
-                <h3>Detection Result</h3>
-
-                <div class="result-name" id="diseaseName">
-                    -
+                <div class="mini-stats">
+                    <div>
+                        <strong>AI</strong>
+                        <small>Powered</small>
+                    </div>
+                    <div>
+                        <strong>Fast</strong>
+                        <small>Analysis</small>
+                    </div>
+                    <div>
+                        <strong>24/7</strong>
+                        <small>Available</small>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="confidence">
-                    Confidence: <span id="confidence">-</span>
-                </div>
+        <!-- Detection Section -->
+        <section class="detect-section" id="detect">
 
-                <p id="suggestion">
-                    Upload an image to get the result.
+            <div class="section-heading">
+                <span class="tag">🔍 Disease Detection</span>
+                <h2>Analyze Your Crop</h2>
+                <p>
+                    Select your crop, upload a clear leaf image,
+                    and start the detection process.
                 </p>
             </div>
 
-        </div>
-    </section>
+            <div class="detector">
 
-    <section class="features">
-        <h2>How It Works</h2>
+                <div class="form-area">
 
-        <div class="feature-container">
-            <div class="feature-card">
-                <span>📷</span>
-                <h3>1. Upload</h3>
-                <p>Upload an image of the crop leaf.</p>
+                    <label for="cropSelect">Select Crop</label>
+
+                    <select id="cropSelect">
+                        <option value="">Choose a crop</option>
+                        <option value="Tomato">🍅 Tomato</option>
+                        <option value="Potato">🥔 Potato</option>
+                        <option value="Corn">🌽 Corn</option>
+                        <option value="Rice">🌾 Rice</option>
+                        <option value="Wheat">🌾 Wheat</option>
+                        <option value="Apple">🍎 Apple</option>
+                    </select>
+
+                    <label>Upload Leaf Image</label>
+
+                    <div class="upload-box" id="uploadBox">
+                        <input type="file" id="imageInput" accept="image/*">
+
+                        <div id="uploadContent">
+                            <div class="upload-icon">📷</div>
+                            <h3>Upload Leaf Image</h3>
+                            <p>Click here or drag & drop an image</p>
+                            <span>PNG, JPG or JPEG</span>
+                        </div>
+
+                        <img id="previewImage" alt="Leaf preview">
+                    </div>
+
+                    <button class="detect-btn" id="detectBtn">
+                        🔍 Detect Disease
+                    </button>
+
+                    <p class="error" id="errorMessage"></p>
+                </div>
+
+                <!-- Result -->
+                <div class="result-area" id="resultArea">
+
+                    <div class="result-placeholder" id="resultPlaceholder">
+                        <div class="result-icon">🌿</div>
+                        <h3>Your Result Will Appear Here</h3>
+                        <p>
+                            Upload a leaf image and click
+                            "Detect Disease" to analyze your crop.
+                        </p>
+                    </div>
+
+                    <div class="result-content" id="resultContent">
+
+                        <div class="result-header">
+                            <span class="status-dot"></span>
+                            <span>Analysis Complete</span>
+                        </div>
+
+                        <h2 id="diseaseName">Healthy</h2>
+
+                        <div class="confidence">
+                            <div class="confidence-top">
+                                <span>Confidence</span>
+                                <strong id="confidenceValue">0%</strong>
+                            </div>
+
+                            <div class="progress">
+                                <div id="progressBar"></div>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>🌱 Crop</h4>
+                            <p id="resultCrop">-</p>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>💡 Recommendation</h4>
+                            <p id="recommendation">
+                                -
+                            </p>
+                        </div>
+
+                        <button class="reset-btn" id="resetBtn">
+                            ↻ Analyze Another Image
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features" id="about">
+
+            <div class="section-heading">
+                <span class="tag">✨ Features</span>
+                <h2>How SmartCrop Helps</h2>
             </div>
 
-            <div class="feature-card">
-                <span>🤖</span>
-                <h3>2. Analyze</h3>
-                <p>The system analyzes the uploaded image.</p>
-            </div>
+            <div class="feature-grid">
 
-            <div class="feature-card">
-                <span>💡</span>
-                <h3>3. Get Result</h3>
-                <p>View the detected disease and suggestion.</p>
-            </div>
-        </div>
-    </section>
+                <div class="feature-card">
+                    <div>📷</div>
+                    <h3>Image Detection</h3>
+                    <p>
+                        Upload a crop leaf image for disease analysis.
+                    </p>
+                </div>
 
-    <section class="about" id="about">
-        <h2>About SmartCrop</h2>
-        <p>
-            SmartCrop is designed to help farmers identify crop diseases
-            at an early stage. The system can be connected with a
-            machine learning model for real-time disease prediction.
-        </p>
-    </section>
+                <div class="feature-card">
+                    <div>🤖</div>
+                    <h3>AI Analysis</h3>
+                    <p>
+                        Machine learning can identify possible diseases.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div>💡</div>
+                    <h3>Recommendations</h3>
+                    <p>
+                        Get simple guidance based on the detected condition.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div>📊</div>
+                    <h3>Confidence Score</h3>
+                    <p>
+                        View the model's prediction confidence.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
 
     <footer>
-        <p>© 2026 SmartCrop Disease Detection</p>
+        <div class="logo footer-logo">
+            <span>🌱</span>
+            <div>
+                <h2>SmartCrop</h2>
+                <small>Disease Detection</small>
+            </div>
+        </div>
+
+        <p>Smart technology for healthier crops.</p>
+        <p class="copyright">© 2026 SmartCrop</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
